@@ -10,7 +10,8 @@ day_df=pd.read_csv("dashboard/day_df.csv")
 # Mengurutkan bulan beradasrkan kategorikal
 month_order = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 day_df['mnth'] = pd.Categorical(day_df['mnth'], categories=month_order, ordered=True)
-
+season_order = ["Spring","Summer","Fall","Winter"]
+day_df['season'] = pd.Categorical(day_df['season'], categories=season_order, ordered=True)
 #dataframe yang akan diolah
 def create_daily_rental(df):
     daily_rental = df.groupby(['dteday']).agg({"cnt":"sum"}).reset_index()
@@ -26,7 +27,7 @@ def create_data_2011(df):
     data_2011 = df[df['yr'] == 2011]
     return data_2011
 def create_data_2012(df):
-    data_2012 =df[df['yr'] == 2011]
+    data_2012 =df[df['yr'] == 2012]
     return data_2012
 def create_corr_data(df):
     cor_data=df[['temp','atemp','hum','windspeed','cnt']]
@@ -84,21 +85,22 @@ with col1:
     total_Rental = daily_rental['cnt'].sum()
     st.metric('Total User Today :', value=total_Rental)
 
-fig, ax = plt.subplots(figsize=(24, 8))
-ax.plot(
-    monthly_data['mnth'],
-    monthly_data['cnt'],
-    marker='o', 
-    linewidth=2,
-    color='tab:blue'
-)
+fig, ax = plt.subplots(figsize=(12,8))
+sns.lineplot(data=monthly_data[monthly_data['yr'] == 2011], x='mnth', y='cnt', marker='o', label='2011', ax=ax, color='tab:blue')
+sns.lineplot(data=monthly_data[monthly_data['yr'] == 2012], x='mnth', y='cnt', marker='X', label='2012', ax=ax, color='tab:red')
+ax.tick_params(axis='x', labelsize=14)
+ax.set_xticks(range(1, 13))
+ax.grid(True,)
+ax.legend()
 
-ax.tick_params(axis='x', labelsize=25)
+
+
+
 st.pyplot(fig)
 
 #Membuat Barchart berdasarkan Musim
 st.subheader('Seasonal Rental')
-fig,ax= plt.subplots(figsize=(24,6))
+fig,ax= plt.subplots(figsize=(14,6))
 sns.barplot(
     y='cnt', 
     x='season',
@@ -112,14 +114,14 @@ st.pyplot(fig)
 
 #Membuat PieChart Berdasarkan jenis pengguna
 st.subheader ('Customer Type')
-fig,ax=plt.subplots(figsize=(18,8))
+fig,ax=plt.subplots(figsize=(6,6))
 labels = ['registered', 'casual']
 values = customer_type[labels].values
 def func(pct, allvalues):
     absolute = int(pct / 100. * sum(allvalues))  
     return f"{absolute} ({pct:.1f}%)"  
 
-ax.pie(values, labels=labels, autopct=lambda pct: func(pct, values), colors=['red', '#3166eb'])
+ax.pie(values, labels=labels, autopct=lambda pct: func(pct, values), colors=['#d47272', '#72BCD4'])
 st.pyplot(fig)
 
 #Membuat Stacked BarChart berdasarkan Hari yang disenangi penyewa
@@ -129,10 +131,10 @@ with col1:
     st.metric('Total Registered User Today :', value=filtered_counts['registered'])
 with col2:
     st.metric('Total Casual User Today :', value=filtered_counts['casual'])
-fig, ax = plt.subplots(figsize=(8, 6))
+fig, ax = plt.subplots(figsize=(12, 6))
 
-ax.bar(day_type_data['workingday'], day_type_data['casual'], label='Casual Users', color='red')
-ax.bar(day_type_data['workingday'], day_type_data['registered'], bottom=day_type_data['casual'], label='Registered Users', color='blue')
+ax.bar(day_type_data['workingday'], day_type_data['casual'], label='Casual Users', color='#d47272')
+ax.bar(day_type_data['workingday'], day_type_data['registered'], bottom=day_type_data['casual'], label='Registered Users', color='#72BCD4')
 
 ax.set_xlabel('Day Type ')
 ax.set_ylabel('Total Rentals')
