@@ -49,7 +49,7 @@ with st.sidebar:
     st.image("index.jpg")    
     # Mengatur start date,end,date untuk digunakan pada filter tanggal
     start_date, end_date = st.date_input(
-        label='Rentang Waktu',
+        label='Date for time range',
         min_value=min_date,
         max_value=max_date,
         value=[min_date, max_date]
@@ -75,11 +75,11 @@ data_2012 = create_data_2012(main_df)
 corr_data = create_corr_data(main_df)
 customer_type = create_customer_type(main_df)
 day_type_data = create_day_type_data(main_df)
-st.header('🚲Icikiwir Rental Dashboard 🚲')
-
-
+st.title('🚲Icikiwir Rental Dashboard 🚲')
+st.write('This Analysis using dataset from Kaggle "Bike Sharing Dataset"(https://www.kaggle.com/datasets/lakshmi25npathi/bike-sharing-dataset). The dataset is related to the two-year historical log corresponding to years 2011 and 2012 from Capital Bikeshare system, Washington D.C., USA')
+st.write('For detailed Analysis and data processing step by step you can find it here : https://github.com/menggiGit33/Dashboard-Bike-Sharing-with-Streamlit/notebook.ipynb')
 # Membuat jumlah penyewaan bulanan
-st.subheader('Monthly Rentals')
+st.header('Monthly Rentals')
 col1, = st.columns(1)
 with col1:
     total_Rental = daily_rental['cnt'].sum()
@@ -92,14 +92,14 @@ ax.tick_params(axis='x', labelsize=14)
 ax.set_xticks(range(1, 13))
 ax.grid(True,)
 ax.legend()
-
-
-
-
 st.pyplot(fig)
 
+st.subheader('Insight:')
+st.write('1. Customer tend to arise when February comes and the trends continues until it peaked in different month for 2011 in May and for 2012 peak was September and after reaching its peak the trends relatively decaying')        
+st.write('2. As we can see 2012 was more profitable than 2011')        
+
 #Membuat Barchart berdasarkan Musim
-st.subheader('Seasonal Rental')
+st.header('Seasonal Rental')
 fig,ax= plt.subplots(figsize=(14,6))
 sns.barplot(
     y='cnt', 
@@ -111,9 +111,10 @@ ax.set_xlabel('Seasons')
 ax.set_ylabel('Total Rent')
 plt.gca().yaxis.get_major_formatter().set_scientific(False)
 st.pyplot(fig)
-
+st.subheader('Insight:')
+st.write('1. Most preferably season to rent a bike was Fall and followed by Summer, then Winter and least preferably was Spring ')        
 #Membuat PieChart Berdasarkan jenis pengguna
-st.subheader ('Customer Type')
+st.header ('Customer Type')
 fig,ax=plt.subplots(figsize=(6,6))
 labels = ['registered', 'casual']
 values = customer_type[labels].values
@@ -123,9 +124,11 @@ def func(pct, allvalues):
 
 ax.pie(values, labels=labels, autopct=lambda pct: func(pct, values), colors=['#d47272', '#72BCD4'])
 st.pyplot(fig)
+st.subheader('Insight:')
+st.write('1. There are 2 types of customer, there are Registered customer/member of bike rental subscriber and Casual/non-member. Registered member are majority of renter of this service and Casual was the minor ones')        
 
 #Membuat Stacked BarChart berdasarkan Hari yang disenangi penyewa
-st.subheader('Bike Rental Favorable Day')
+st.header('Bike Rental Favorable Day')
 col1,col2, = st.columns(2)
 with col1:
     st.metric('Total Registered User Today :', value=filtered_counts['registered'])
@@ -142,3 +145,5 @@ ax.set_ylabel('Total Rentals')
 ax.legend()
 plt.gca().yaxis.get_major_formatter().set_scientific(False)
 st.pyplot(fig)
+st.subheader('Insight:')
+st.write('1. with those 2 types of customer, our Members favored to use this service in Workingday same as non-member and they least favored in Non-Workingday  ')
