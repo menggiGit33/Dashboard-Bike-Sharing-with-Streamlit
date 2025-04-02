@@ -1,6 +1,6 @@
 # Dashboard Bike Sharing with Streamlit
 
-A Streamlit-powered interactive dashboard to visualize bike-sharing data from 2011 and 2012. The dashboard provides insights into rental trends based on months, seasons, customer types, and day types.
+A Streamlit-powered interactive dashboard to visualize the two-year historical log corresponding to years 2011 and 2012 from Capital Bikeshare system, Washington D.C., USA. The dashboard provides insights into rental trends based on months, seasons, customer types, and day types.
 
 ## Features
 - **Monthly Analysis:** Track bike rental patterns across different months.
@@ -26,10 +26,15 @@ A Streamlit-powered interactive dashboard to visualize bike-sharing data from 20
    ```
 
 ## Dataset
-The dashboard utilizes the bike-sharing dataset, which contains rental data from 2011 and 2012. Ensure the dataset is correctly placed in the project directory before running the app.
+The dashboard utilizes the [Bike Sharing Dataset](https://www.kaggle.com/datasets/lakshmi25npathi/bike-sharing-dataset), which contains rental data from Capital Bikeshare system, Washington D.C., USA, within the time range 2011-2012. Ensure the dataset is correctly placed in the project directory before running the app.
 
 ## Screenshots
-*(Add relevant screenshots of the dashboard here)*
+![image](https://github.com/user-attachments/assets/955d0a47-4f3e-43c2-b5fb-d38803436ef9)
+![image](https://github.com/user-attachments/assets/970e7e18-94b1-4c84-8475-ed2ca9a62764)
+![image](https://github.com/user-attachments/assets/9037ce15-d31d-4791-a189-4663a3aaf520)
+
+
+
 
 ## Future Improvements
 - Adding more interactive filters.
@@ -38,5 +43,5 @@ The dashboard utilizes the bike-sharing dataset, which contains rental data from
 
 
 
-```
-## Streamlit Dashboard : https://dashboard-bike-sharing-with-app-au48z4yvawy5inohozvcmz.streamlit.app/
+
+## Streamlit Interactive Dashboard: https://dashboard-bike-sharing-with-app-au48z4yvawy5inohozvcmz.streamlit.app/
