@@ -11,6 +11,7 @@ A Streamlit-powered interactive dashboard to visualize the two-year historical l
 
 ## Installation
 
+### Standart Instalation
 1. Clone the repository:
    ```sh
    git clone https://github.com/menggiGit33/Dashboard-Bike-Sharing-with-Streamlit.git
@@ -20,24 +21,37 @@ A Streamlit-powered interactive dashboard to visualize the two-year historical l
    ```sh
    pip install -r requirements.txt
    ```
-
-### For Anacaonda Environment
-1. Create Environment
-```
-conda create --name main-ds python=3.9
-conda activate main-ds
-pip install -r requirements.txt
-```
-
-2. Setup Environment - Shell/Terminal
-```
-mkdir project_name
-cd project_name
-pipenv install
-pipenv shell
-pip install -r requirements.txt
-```
-
+3. Run the Streamlit app:
+   ```sh
+   streamlit run app.py
+   ```
+### Anacaonda Environment
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/menggiGit33/Dashboard-Bike-Sharing-with-Streamlit.git
+   cd Dashboard-Bike-Sharing-with-Streamlit
+   ```
+2. Create Environment and Install Depedencies
+   ```sh
+   conda create --name main-ds python=3.9
+   conda activate main-ds
+   pip install -r requirements.txt
+   ```
+3. Run the Streamlit app:
+   ```sh
+   streamlit run app.py
+   ```
+### pipenv Environment
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/menggiGit33/Dashboard-Bike-Sharing-with-Streamlit.git
+   cd Dashboard-Bike-Sharing-with-Streamlit
+   ```
+2. Setup Environment and Install Depedencies
+   ```sh
+   pipenv install -r requirements.txt
+   pipenv shell 
+   ```
 3. Run the Streamlit app:
    ```sh
    streamlit run app.py
