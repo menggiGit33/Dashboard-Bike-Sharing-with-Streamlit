@@ -39,7 +39,7 @@ The dashboard utilizes the [Bike Sharing Dataset](https://www.kaggle.com/dataset
 ## Future Improvements
 - Adding more interactive filters.
 - Enhancing data visualization with additional plots.
-- Expanding analysis to include weather impact.
+
 
 
 
