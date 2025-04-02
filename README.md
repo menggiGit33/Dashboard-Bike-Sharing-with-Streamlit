@@ -68,12 +68,5 @@ The dashboard utilizes the [Bike Sharing Dataset](https://www.kaggle.com/dataset
 
 
 
-## Future Improvements
-- Adding more interactive filters.
-- Enhancing data visualization with additional plots.
-
-
-
-
 
 ## Streamlit Interactive Dashboard: https://dashboard-bike-sharing-with-app-au48z4yvawy5inohozvcmz.streamlit.app/
