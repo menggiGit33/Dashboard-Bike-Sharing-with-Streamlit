@@ -21,7 +21,7 @@ A Streamlit-powered interactive dashboard to visualize the two-year historical l
    pip install -r requirements.txt
    ```
 
-      ### For Anacaonda Environment
+### For Anacaonda Environment
 1. Create Environment
 ```
 conda create --name main-ds python=3.9
@@ -36,6 +36,7 @@ cd project_name
 pipenv install
 pipenv shell
 pip install -r requirements.txt
+```
 
 3. Run the Streamlit app:
    ```sh
